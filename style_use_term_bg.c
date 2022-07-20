@@ -2,6 +2,7 @@
 
 void style_use_term_bg(int n_args, char **args) {
     yed_style *s;
+    yed_event  event;
 
     s = yed_get_active_style();
 
@@ -28,7 +29,9 @@ void style_use_term_bg(int n_args, char **args) {
     s->inactive.bg        = 0;
     s->inactive_border.bg = 0;
 
-    yed_activate_style(s->_name);
+    memset(&event, 0, sizeof(event));
+    event.kind = EVENT_STYLE_CHANGE;
+    yed_trigger_event(&event);
 }
 
 void style_term_bg(int n_args, char **args) {
