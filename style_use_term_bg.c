@@ -10,20 +10,28 @@ void style_use_term_bg(int n_args, char **args) {
 
     if (s->command_line.bg == s->active.bg
     ||  s->command_line.bg == s->inactive.bg) {
+        ATTR_SET_BG_KIND(s->command_line.flags, ATTR_KIND_NONE);
         s->command_line.bg = 0;
     }
     if (s->cursor_line.bg == s->active.bg
     ||  s->cursor_line.bg == s->inactive.bg) {
+        ATTR_SET_BG_KIND(s->cursor_line.flags, ATTR_KIND_NONE);
         s->cursor_line.bg = 0;
     }
     if (s->active_gutter.bg == s->active.bg
     ||  s->active_gutter.bg == s->inactive.bg) {
+        ATTR_SET_BG_KIND(s->active_gutter.flags, ATTR_KIND_NONE);
         s->active_gutter.bg = 0;
     }
     if (s->inactive_gutter.bg == s->active.bg
     ||  s->inactive_gutter.bg == s->inactive.bg) {
+        ATTR_SET_BG_KIND(s->inactive_gutter.flags, ATTR_KIND_NONE);
         s->inactive_gutter.bg = 0;
     }
+    ATTR_SET_BG_KIND(s->active.flags, ATTR_KIND_NONE);
+    ATTR_SET_BG_KIND(s->active_border.flags, ATTR_KIND_NONE);
+    ATTR_SET_BG_KIND(s->inactive.flags, ATTR_KIND_NONE);
+    ATTR_SET_BG_KIND(s->inactive_border.flags, ATTR_KIND_NONE);
     s->active.bg          = 0;
     s->active_border.bg   = 0;
     s->inactive.bg        = 0;
